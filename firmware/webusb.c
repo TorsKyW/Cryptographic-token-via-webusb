@@ -60,6 +60,8 @@ void process_webusb_request(const uint8_t *buf, uint16_t len) {
     } else{
         const uint8_t *msg = buf;
         size_t msg_len = len;
+        flash_read_key(private_key, 64,1);
+        flash_read_key(public_key, 32,2);
         ed25519_sign(signature, msg, msg_len, public_key, private_key);
         tud_vendor_write(signature, 64);
         tud_vendor_flush();
