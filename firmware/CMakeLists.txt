@@ -38,6 +38,9 @@ pico_sdk_init()
 add_executable(webusb 
     webusb.c 
     usb_descriptors.c
+    src/add_scalar.c
+    src/verify.c
+    src/key_exchange.c
     src/fe.c
     src/ge.c
     src/keypair.c

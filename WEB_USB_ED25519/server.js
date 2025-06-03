@@ -33,14 +33,16 @@ app.post('/api/store',checkPasswd, (req,res)=>{
     res.status(200).send('Data stored');
 });
 // sends the necessary variables for testing the vsignature verification
-app.post('/api/test',(req,res)=>{
-    const Message=req.body.Message;
-    const messageUint8= nacl.util.decodeUTF8(req.body.Message);
-    const KeyPair = nacl.sign.keyPair();
-    const publicKeyArray = Array.from(KeyPair.publicKey);
-    const signature = Array.from(nacl.sign.detached(messageUint8,KeyPair.secretKey));
-    res.status(200).json({publicKeyArray,signature,Message});
-});
+// app.post('/api/test',(req,res)=>{
+//     const Message=req.body.Message;
+//     const messageUint8= nacl.util.decodeUTF8(req.body.Message);
+//     const KeyPair = nacl.sign.keyPair();
+//     const publicKeyArray = Array.from(KeyPair.publicKey);
+//     const signature = Array.from(nacl.sign.detached(messageUint8,KeyPair.secretKey));
+//     res.status(200).json({publicKeyArray,signature,Message});
+// });
+
+
 // verification of signature
 const isAuthorized=(req,res,next)=>{
     const message=nacl.util.decodeUTF8(req.body.Message);

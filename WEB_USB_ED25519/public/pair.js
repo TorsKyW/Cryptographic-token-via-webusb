@@ -1,13 +1,13 @@
 const pair= ()=>{
     
     let key,device;
-    navigator.usb.requestDevice({ filters: [] })
+    navigator.usb.requestDevice({ filters: [{vendorId:0xCafe}] })
     .then(selectedDevice=>{
         device=selectedDevice;
         return device.open();
     })
     .then(()=>device.selectConfiguration(1))
-    .then(()=>device.claimInterface(0))
+    .then(()=>device.claimInterface(2))
     .then(()=>{
         const encoder=new TextEncoder();
         // requests the public key

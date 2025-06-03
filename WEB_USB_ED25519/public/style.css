@@ -46,8 +46,3 @@ button:hover{
     flex-direction: column;
     text-align: center;
 }
-.test{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
