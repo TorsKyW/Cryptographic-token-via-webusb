@@ -25,7 +25,7 @@ const connect=()=>{
         signature2 = new Uint8Array(result.data.buffer);
         signature1=Array.from(signature1);
         signature2=Array.from(signature2);
-        const fullSignature=new Uint8Array(signature1.concat(signature2));
+        const fullSignature=signature1.concat(signature2);
         authorize(fullSignature,message,device);
 
     }).catch(error=>{console.error(error)});
