@@ -6,7 +6,7 @@ const hide=()=>{
     start.style.display='flex';
 }
 const authorize=(signature,message,device)=>{
-    let Signature=Array.from(signature),Message=message;
+    let Signature=signature,Message=message;
     // sends a signature verification request to the server
     fetch('/private', {
         method: 'POST',
