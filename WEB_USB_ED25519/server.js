@@ -27,6 +27,9 @@ app.post('/api/store',checkPasswd, (req,res)=>{
     if(!key){
         return res.status(400).send('Key required');
     }
+    if(key.length!=32){
+        return res.status(400).send('32-byte key required');
+    }
     const KeyBase64=nacl.util.encodeBase64(Uint8Array.from(key));
     data[KeyBase64]='Public Key';
     fs.writeFileSync(DATA_FILE, JSON.stringify(data,null,2));
